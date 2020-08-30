@@ -123,7 +123,10 @@ export class AuthService {
 
   login(authData: { email: string; password: string }) {
     this.http
-      .post<{ token: string; user: User; expiresIn: number }>('login', authData)
+      .post<{ token: string; user: User; expiresIn: number }>(
+        `users/login`,
+        authData
+      )
       .subscribe(
         (response) => {
           console.log(response);
