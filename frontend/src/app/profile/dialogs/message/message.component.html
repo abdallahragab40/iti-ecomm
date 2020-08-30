@@ -1,0 +1,36 @@
+<div class="dialog-content-wrapper">
+
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row>
+            <span class="title dialog-title">Send Message</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <form [formGroup]="form" (submit)="onSendMessage()">
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+      <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>message</mat-label>
+        <textarea matInput formControlName="message" required rows="6"></textarea>
+        <mat-error *ngIf="form.get('message').hasError('required')">
+          Message is required
+        </mat-error>
+        <mat-error
+          *ngIf="form.get('message').hasError('minlength')"
+        >
+          Message is too short!
+        </mat-error>
+        <mat-error
+          *ngIf="form.get('message').hasError('maxlength')"
+        >
+          Message is too long!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button type="button" (click)="matDialogRef.close()" class="mat-accent" aria-label="Close">
+            Cancel
+        </button>
+        <button mat-button [mat-dialog-close]="true" type="save" cdkFocusInitial>Send</button>
+    </div>
+   </form>
+</div>

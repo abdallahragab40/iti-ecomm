@@ -1,0 +1,138 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+      <button
+        mat-icon-button
+        class="navbar-toggle-button"
+        *ngIf="!hiddenNavbar && !rightNavbar && isAuth"
+        (click)="toggleSidebarOpen('navbar')"
+        fxHide.gt-md
+      >
+        <mat-icon class="secondary-text">menu</mat-icon>
+      </button>
+
+      <div
+        class="toolbar-separator"
+        *ngIf="!hiddenNavbar && !rightNavbar"
+        fxHide.gt-md
+      ></div>
+    </div>
+
+    <div
+      class=""
+      fxFlex="0 1 auto"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      *ngIf="isAuth"
+    >
+      <button mat-button class="user-button" [routerLink]="'/home'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>home</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>Home</span>
+        </div>
+      </button>
+
+      <div class="toolbar-separator"></div>
+
+      <button mat-button class="user-button" [routerLink]="'/courses'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>school</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>Courses</span>
+        </div>
+      </button>
+
+      <div class="toolbar-separator"></div>
+
+      <button
+        mat-button
+        class="user-button"
+        [routerLink]="'/pricing'"
+        *ngIf="getUserRole === 'instructor'"
+      >
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>monetization_on</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>Pricing</span>
+        </div>
+      </button>
+
+      <div class="toolbar-separator"></div>
+
+      <button mat-button class="user-button" [routerLink]="'/calendar'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>calendar_today</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>Calendar</span>
+        </div>
+      </button>
+
+      <div class="toolbar-separator"></div>
+
+      <button mat-button class="user-button" [routerLink]="'/faq'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>question_answer</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>FAQs</span>
+        </div>
+      </button>
+
+      <div class="toolbar-separator"></div>
+
+      <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <img class="avatar mr-0 mr-sm-16" [src]="currentUser.image" />
+          <span class="username mr-12 capitalize" fxHide fxShow.gt-sm>{{
+            currentUser.username
+          }}</span>
+          <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
+        </div>
+      </button>
+
+      <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+        <button mat-menu-item (click)="handleProfile()">
+          <mat-icon>account_circle</mat-icon>
+          <span>My Profile</span>
+        </button>
+
+        <button mat-menu-item class="" (click)="authService.logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+
+      <div class="toolbar-separator"></div>
+
+      <fuse-search-bar (input)="search($event)"></fuse-search-bar>
+    </div>
+    <div
+      class=""
+      fxFlex="0 1 auto"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      *ngIf="!isAuth"
+    >
+      <button mat-button class="user-button" [routerLink]="'/home'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>home</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>Home</span>
+        </div>
+      </button>
+      <div class="toolbar-separator"></div>
+      <button mat-button class="user-button" [routerLink]="'/faq'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon>question_answer</mat-icon>
+          <span class="ml-12" fxHide fxShow.gt-sm>FAQs</span>
+        </div>
+      </button>
+      <div class="toolbar-separator"></div>
+      <button mat-button class="user-button" [routerLink]="'/auth/login'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <span>Login</span>
+        </div>
+      </button>
+      <div class="toolbar-separator"></div>
+      <button mat-button class="user-button" [routerLink]="'/auth/signup'">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <span>Sign Up</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

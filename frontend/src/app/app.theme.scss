@@ -1,0 +1,168 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Custom color maps for Fuse
+// -----------------------------------------------------------------------------------------------------
+$fuse-white: (
+  500: white,
+  contrast: (
+    500: $dark-primary-text,
+  ),
+);
+
+$fuse-black: (
+  500: black,
+  contrast: (
+    500: $light-primary-text,
+  ),
+);
+
+$fuse-navy: (
+  50: #ececee,
+  100: #c5c6cb,
+  200: #9ea1a9,
+  300: #7d818c,
+  400: #5c616f,
+  500: #3c4252,
+  600: #353a48,
+  700: #2d323e,
+  800: #262933,
+  900: #1e2129,
+  A100: #c5c6cb,
+  A200: #9ea1a9,
+  A400: #5c616f,
+  A700: #2d323e,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+// Generate Fuse color classes for custom palettes
+$custom_palettes: (
+  fuse-white: $fuse-white,
+  fuse-black: $fuse-black,
+  fuse-navy: $fuse-navy,
+);
+
+@include fuse-color-classes($custom_palettes);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+
+// Angular Material typography
+$typography: mat-typography-config(
+  $font-family: "Muli, Helvetica Neue, Arial, sans-serif",
+  $title: mat-typography-level(20px, 32px, 600),
+  $body-2: mat-typography-level(14px, 24px, 600),
+  $button: mat-typography-level(14px, 14px, 600),
+  $input: mat-typography-level(16px, 1.125, 400)
+    // line-height must be unitless !!!,,,,,,,,,,
+);
+
+// Setup the typography
+@include angular-material-typography($typography);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Component theming
+// -----------------------------------------------------------------------------------------------------
+
+// Import app and page component themes here to enable theming for them
+@import "src/app/layout/components/toolbar/toolbar.theme";
+
+@import "src/app/auth/login/login.theme";
+@import "src/app/auth/signup/signup.theme";
+@import "src/app/auth/forgot-password/forgot-password.theme";
+@import "src/app/auth/mail-confirm/mail-confirm.theme";
+@import "src/app/auth/reset-password/reset-password.theme";
+@import "src/app/academy/academy.theme";
+@import "src/app/error/404/error-404.theme";
+@import "src/app/error/500/error-500.theme";
+@import "src/app/core/pricing/style-3.theme";
+@import "src/app/auth/signup/signup-student/signup-student.theme";
+@import "src/app/auth/signup/signup-instructor/signup-instructor.theme";
+@import "src/app/auth/signup/signup-community/signup-community.theme";
+@import "src/app/profile/CommunityProfile/tabs/about/about.theme";
+@import "src/app/profile/InstructorProfile/tabs/about/about.theme";
+@import "src/app/profile/StudentProfile/tabs/about/about.theme";
+@import "src/app/features/pricing/pricing-offers/pricing-offers.theme";
+@import "src/app/features/pricing/pricing-success/pricing-success.theme";
+@import "src/app/features/faq/faq.theme";
+@import "src/app/features/calendar/calendar.theme";
+@import "src/app/profile/public-profile/tabs/about/about.theme";
+// Define a mixin for easier access
+@mixin components-theme($theme) {
+  // Layout components
+  @include toolbar-theme($theme);
+
+  // Pages
+  @include login-theme($theme);
+  @include signup-theme($theme);
+  @include forgot-password-theme($theme);
+  @include reset-password-theme($theme);
+  @include mail-confirm-theme($theme);
+  @include academy-theme($theme);
+  @include error-404-theme($theme);
+  @include error-500-theme($theme);
+  @include pricing-style-3-theme($theme);
+  @include signup-student-theme($theme);
+  @include signup-instructor-theme($theme);
+  @include community-profile-about-theme($theme);
+  @include student-profile-about-theme($theme);
+  @include instructor-profile-about-theme($theme);
+  @include signup-community-theme($theme);
+  @include pricing-offers-theme($theme);
+  @include pricing-success-theme($theme);
+  @include faq-theme($theme);
+  @include calendar-theme($theme);
+  @include public-profile-about-theme($theme);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define the default theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$default-primary-palette: mat-palette($fuse-navy);
+$default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
+$default-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$theme: mat-light-theme(
+  $default-primary-palette,
+  $default-accent-palette,
+  $default-warn-palette
+);
+
+// Add ".theme-default" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-default {
+  // Create an Angular Material theme from the $theme map
+  @include angular-material-theme($theme);
+
+  // Apply the theme to the Fuse Core
+  @include fuse-core-theme($theme);
+
+  // Apply the theme to the user components
+  @include components-theme($theme);
+
+  // Generate Fuse color classes for primary, accent and warn colors
+  $palettes: (
+    primary: $default-primary-palette,
+    accent: $default-accent-palette,
+    warn: $default-warn-palette,
+  );
+
+  @include fuse-color-classes($palettes);
+}

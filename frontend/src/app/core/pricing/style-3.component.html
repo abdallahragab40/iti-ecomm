@@ -1,0 +1,209 @@
+<div id="price-tables" class="page-layout simple fullwidth">
+  <!-- HEADER -->
+  <div
+    class="header"
+    fxLayout="row"
+    fxLayoutAlign="start start"
+  >
+    <div
+      class="hero-text"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxFlex
+    >
+      <div class="h1">Pricing Table</div>
+      <div class="h3">
+        The most advanced customer support tools with a simple and affordable
+        pricing. And you can always try for 7 days, free!
+      </div>
+    </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content" fxLayout="column">
+    <!-- PRICE TABLES -->
+    <div
+      class="price-tables"
+      fxLayout="row wrap"
+      fxLayoutAlign="center center"
+    >
+      <div class="price-table style-3 mat-elevation-z4" fxLayout="column">
+        <div class="package-type">
+          <div class="title">Basic</div>
+          <div class="subtitle">For small teams</div>
+        </div>
+
+        <div
+          class="price primary-300"
+          fxLayout="row"
+          fxLayoutAlign="center start"
+        >
+          <div class="currency">$</div>
+          <div fxLayout="row" fxLayoutAlign="center end">
+            <div class="value">29</div>
+            <div class="period">monthly per user</div>
+          </div>
+        </div>
+
+        <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+          <div class="term">3 Courses</div>
+          <div class="term">10 Students / Course</div>
+          <div class="term">200 hrs</div>
+          <div class="term">Limited support</div>
+        </div>
+
+        <button
+          mat-raised-button
+          class="cta-button"
+          color="accent"
+          *ngIf="!isAuth"
+          [routerLink]="'/auth/login'"
+        >
+          GET STARTED NOW
+        </button>
+        <button
+          mat-raised-button
+          class="cta-button"
+          color="accent"
+          *ngIf="isAuth && getUserRole !== 'student'"
+          [routerLink]="'/pricing'"
+        >
+          GET STARTED NOW
+        </button>
+
+        <div class="note">7 day free trial to start</div>
+      </div>
+
+      <div class="price-table style-3 mat-elevation-z12" fxLayout="column">
+        <div class="package-type">
+          <div class="title">Premium</div>
+          <div class="subtitle">For larger teams</div>
+        </div>
+
+        <div class="price primary" fxLayout="row" fxLayoutAlign="center start">
+          <div class="currency">$</div>
+          <div fxLayout="row" fxLayoutAlign="center end">
+            <div class="value">59</div>
+            <div class="period">monthly per user</div>
+          </div>
+        </div>
+
+        <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+          <div class="term">6 Courses</div>
+          <div class="term">15 Students / Course</div>
+          <div class="term">400 hrs</div>
+          <div class="term">Unlimited support</div>
+          <div class="term mat-warn-fg">Advanced reporting</div>
+          <div class="term mat-warn-fg">Customizable interface</div>
+        </div>
+
+        <button
+          mat-raised-button
+          class="cta-button"
+          color="accent"
+          *ngIf="!isAuth"
+          [routerLink]="'/auth/login'"
+        >
+          GET STARTED NOW
+        </button>
+        <button
+          mat-raised-button
+          class="cta-button"
+          color="accent"
+          *ngIf="isAuth && getUserRole !== 'student'"
+          [routerLink]="'/pricing'"
+        >
+          GET STARTED NOW
+        </button>
+        <div class="note">30 day free trial to start</div>
+      </div>
+
+      <div class="price-table style-3 mat-elevation-z4" fxLayout="column">
+        <div class="package-type">
+          <div class="title">Gold</div>
+          <div class="subtitle">For big teams</div>
+        </div>
+
+        <div
+          class="price primary-300"
+          fxLayout="row"
+          fxLayoutAlign="center start"
+        >
+          <div class="currency">$</div>
+          <div fxLayout="row" fxLayoutAlign="center end">
+            <div class="value">99</div>
+            <div class="period">monthly per user</div>
+          </div>
+        </div>
+
+        <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+          <div class="term">Unlimited courses</div>
+          <div class="term">Unlimited students</div>
+          <div class="term">Unlimited hrs</div>
+          <div class="term">For full feature list, call us</div>
+        </div>
+
+        <button
+          mat-raised-button
+          class="cta-button"
+          color="accent"
+          *ngIf="!isAuth"
+          [routerLink]="'/auth/login'"
+        >
+          GET STARTED NOW
+        </button>
+        <button
+          mat-raised-button
+          class="cta-button"
+          color="accent"
+          *ngIf="isAuth && getUserRole !== 'student'"
+          [routerLink]="'/pricing'"
+        >
+          GET STARTED NOW
+        </button>
+
+        <div class="note">90 day free trial to start</div>
+      </div>
+    </div>
+    <!-- / PRICE TABLES -->
+
+    <div class="faq" fxLayout="row wrap">
+      <div class="title" fxFlex="100">Features</div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">Bring your community together</div>
+        <div class="answer">
+          Learning is not just about instructors and students. E-comm allows you
+          to bring everyone together students, instructors and communities with
+          one communication and collaboration platform.
+        </div>
+      </div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">Connect Your Community</div>
+        <div class="answer">
+          Valuable opportunities for students and faculty open up when they can
+          continue discussions after class, ask questions anytime they have one.
+        </div>
+      </div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">Design Engaging Courses</div>
+        <div class="answer">
+          We make it easy to build courses that leverage new and existing
+          content. Instructors can quickly create media-­rich lessons, reuse
+          their past courses, and even embed content.
+        </div>
+      </div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">Tasks and Exams</div>
+        <div class="answer">
+          Our system allow instructors to create task or exam in a specific
+          course to all students and keep track of their learning path.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

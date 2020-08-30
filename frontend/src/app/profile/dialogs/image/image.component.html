@@ -1,0 +1,26 @@
+<div class="dialog-content-wrapper">
+
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row>
+            <span class="title dialog-title">Edit Profile Image</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <form [formGroup]="form" (submit)="onSaveImage()">
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+      <div>
+        <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+        <input type="file" #filePicker (change)="onImagePicked($event)">
+      </div>
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+        <img [src]="imagePreview" alt="image">
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button type="button" (click)="matDialogRef.close()" class="mat-accent" aria-label="Close">
+            Cancel
+        </button>
+        <button mat-button [mat-dialog-close]="true" type="save" cdkFocusInitial>Save Image</button>
+    </div>
+   </form>
+</div>

@@ -1,0 +1,128 @@
+<div id="about" class="p-24" fxLayout="row wrap">
+  <div
+    class="about-content"
+    fxLayout="column"
+    fxFlex="100"
+    fxFlex.gt-sm="50"
+    fxFlex.gt-md="65"
+  >
+    <div class="profile-box info-box general" fxLayout="column">
+      <header class="accent">
+        <div class="title">General Information</div>
+      </header>
+
+      <div class="content">
+        <div class="info-line">
+          <div class="title">Username</div>
+          <div class="info">{{ about?.username }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="title">Email</div>
+          <div class="info">{{ about?.email }}</div>
+        </div>
+
+        <div class="info-line">
+          <div class="title">About Me</div>
+          <div class="info">{{ about?.about }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-box info-box contact" fxLayout="column">
+      <header class="accent">
+        <div class="title">Contact</div>
+      </header>
+
+      <div class="content">
+        <div class="info-line">
+          <div class="title">Country</div>
+          <div class="info">{{ about?.country }}</div>
+        </div>
+        <div class="info-line">
+          <div class="title">City</div>
+          <div class="info">{{ about?.city }}</div>
+        </div>
+        <div class="info-line">
+          <div class="title">Address</div>
+          <div class="info">{{ about?.address }}</div>
+        </div>
+        <div class="info-line">
+          <div class="title">Phone</div>
+          <div class="info">{{ about?.phone }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="about-sidebar"
+    fxLayout="column"
+    fxFlex="100"
+    fxFlex.gt-sm="50"
+    fxFlex.gt-md="35"
+  >
+    <div class="profile-box friends" fxLayout="column">
+      <header
+        class="accent"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <div class="title">Courses</div>
+        <div class="more secondary-text">
+          <!-- <div class="info">{{ about?.courses?.title }}</div> -->
+        </div>
+      </header>
+
+      <div class="content" fxLayout="row wrap">
+        <div class="friend" fxFlex="100" *ngFor="let course of about?.courses">
+          <button mat-button [routerLink]="'/courses/' + course._id">
+            {{ course.title }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      *ngIf="about?.teaches?.length"
+      class="profile-box groups"
+      fxLayout="column"
+    >
+      <header
+        class="accent"
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+      >
+        <div class="title">Students</div>
+        <div class="more secondary-text">
+          <span></span>
+        </div>
+      </header>
+
+      <div class="content">
+        <div
+          class="group"
+          *ngFor="let student of about?.teaches"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            [ngStyle]="{ cursor: 'pointer' }"
+          >
+            <div class="logo">
+              {{ student.username.substring(0, 2) | uppercase }}
+            </div>
+
+            <div [routerLink]="'/profile/users/' + student.username">
+              <div class="name">{{ student.username }}</div>
+              <!-- <div class="category">{{ group.category }}</div>
+            <div class="members">{{ group.members }} people</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

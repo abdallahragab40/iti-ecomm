@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex: 0 0 auto;
+  z-index: 3;
+
+  .mat-toolbar {
+      box-shadow: 0px -1px 1px -1px rgba(0, 0, 0, 0.2), 0px 0px 1px 0px rgba(0, 0, 0, 0.14), 0px -1px 3px 0px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      color: #fff;
+      background: #1a237e;
+      background: linear-gradient(to right, #0e2a3b 0%, #34306b 100%);
+  }
+}

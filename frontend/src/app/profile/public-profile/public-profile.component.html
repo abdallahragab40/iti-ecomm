@@ -1,0 +1,37 @@
+<div id="profile" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="space-between end">
+
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="start center">
+            <img class="profile-image avatar huge" [src]="user.image"
+                 [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <div class="name text-capitalize" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                {{user.username}}
+            </div>
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
+            <button mat-raised-button color="primary" aria-label="Send Message" (click)="openDialog()">Send Message</button>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <mat-tab-group dynamicHeight="true">
+
+            <mat-tab label="About">
+                <public-profile-about [user]="user"></public-profile-about>
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

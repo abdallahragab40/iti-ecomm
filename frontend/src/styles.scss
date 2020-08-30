@@ -1,0 +1,36 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: block;
+  position: relative;
+}
+
+lib-toastify-toast i {
+  color: #fff !important;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.toast--success {
+  text-transform: capitalize;
+}
